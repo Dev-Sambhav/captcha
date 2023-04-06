@@ -1,4 +1,9 @@
+import ReCAPTCHA from "react-google-recaptcha";
+
 const Form = () => {
+    const onChange = (value)=>{
+        console.log("Captcha value:", value);
+    }
   return (
     <form className="login_form">
       <h2 className="title">Login</h2>
@@ -11,6 +16,10 @@ const Form = () => {
           <span className="text">Password</span>
           <input type="password" className="user_pass" />
         </label>
+        <ReCAPTCHA 
+            sitekey="6LfYZ2IlAAAAAFSlNtHj-HNO-NaJ-DOwgo24XFBc"
+            onChange={onChange}
+        />
       </div>
       <button className="btn">Login</button>
     </form>
