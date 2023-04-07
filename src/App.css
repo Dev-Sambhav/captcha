@@ -60,3 +60,14 @@ input{
   background-color: var(--btn-color);
   color: white;
 }
+
+p{
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: -1.2rem;
+}
+
+.link{
+  text-decoration: none;
+  
+}

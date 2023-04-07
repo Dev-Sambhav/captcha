@@ -1,0 +1,9 @@
+.welcome_page{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.welcome_page h2{
+    text-align: center;
+}
