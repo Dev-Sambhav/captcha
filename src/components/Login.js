@@ -13,11 +13,11 @@ const Login = () => {
   const [value, setValue] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (!value) {
       alert("Please validate the captcha");
       return;
     }
-    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         const user = res.user;
@@ -37,7 +37,8 @@ const Login = () => {
     navigate("/");
   }
   return (
-    <form className="login_form" onSubmit={handleSubmit}>
+    <div className="app_container">
+      <form className="login_form" onSubmit={handleSubmit}>
       <h2 className="title">Login</h2>
       <div className="user_info">
         <label className="info">
@@ -71,6 +72,7 @@ const Login = () => {
         </Link>
       </p>
     </form>
+    </div>
   );
 };
 export default Login;

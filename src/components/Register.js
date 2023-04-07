@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
@@ -10,15 +9,10 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [value, setValue] = useState(null);
   const {currentUser, setCurrentUser} = useAuthContext();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!value){
-      alert("Please validate the captcha");
-      return;
-    }
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       // check res is valid or not
@@ -41,11 +35,8 @@ const Register = () => {
     navigate('/')
   }
 
-  const onChange = (v) => {
-    if(v) setValue(v);
-  };
   return (
-    <>
+    <div className="app_container">
       <form className="login_form" onSubmit={handleSubmit}>
         <h2 className="title">Register</h2>
         <div className="user_info">
@@ -79,10 +70,6 @@ const Register = () => {
               required
             />
           </label>
-          <ReCAPTCHA
-            sitekey="6LfYZ2IlAAAAAFSlNtHj-HNO-NaJ-DOwgo24XFBc"
-            onChange={onChange}
-          />
         </div>
         <button className="btn">Register</button>
         <p>
@@ -92,7 +79,7 @@ const Register = () => {
           </Link>
         </p>
       </form>
-    </>
+    </div>
   );
 };
 export default Register;
